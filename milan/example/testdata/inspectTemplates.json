@@ -1,0 +1,23 @@
+{
+  "inspectTemplate":{
+    "displayName":"Phone number inspection",
+    "description":"Scans for phone numbers",
+    "inspectConfig":{
+      "infoTypes":[
+        {
+          "name":"PHONE_NUMBER"
+        },
+        {
+          "name":"US_TOLLFREE_PHONE_NUMBER"
+        },
+        { "name": "DATE_OF_BIRTH" }
+      ],
+      "minLikelihood":"POSSIBLE",
+      "limits":{
+        "maxFindingsPerRequest":100
+      },
+      "includeQuote":true
+    }
+  }
+}
+

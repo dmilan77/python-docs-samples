@@ -1,0 +1,29 @@
+#!/bin/bash
+
+_init(){
+  export gcp_venv_name='gcp-dlp-test'
+  export GCLOUD_PROJECT_ID='data-protection-01'
+  export GCLOUD_PROJECT=${GCLOUD_PROJECT_ID}
+  export GOOGLE_APPLICATION_CREDENTIALS=/Users/milandas/Documents/securekey/gcp_service_acount_key.json
+  export GCLOUD_API_KEY=AIzaSyDKrs70_XKh_5p_TXdM2x8POqLvyammjbk
+  export GCLOUD_ACCESS_TOKEN=$(gcloud auth print-access-token)
+  python -m venv ${gcp_venv_name}
+  source ${gcp_venv_name}/bin/activate
+#   pip install -r requirements.txt
+#   pip install -r requirements-test.txt
+
+}
+
+post() {
+  URL=$1
+  CONTENT_TYPE=$2
+  JSONFILEPATH=$3
+  curl -s \
+  -H "Authorization: Bearer ${GCLOUD_ACCESS_TOKEN}" \
+  -H "Content-Type: ${CONTENT_TYPE}" \
+  ${URL} \
+  -d @${JSONFILEPATH}
+}
+
+
+_init
